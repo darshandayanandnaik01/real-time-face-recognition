@@ -1,156 +1,138 @@
-# **Real-Time Face Recognition System**
+<h1 align="center">Real-Time Face Recognition System</h1>
+<p align="center">A Python & OpenCV-based real-time face detection and recognition system using LBPH.</p>
 
-A complete real-time face detection and recognition system built using **Python**, **OpenCV (contrib)**, and the **LBPH Face Recognizer**.
-This project allows you to collect face samples, train a recognition model, and perform real-time face recognition through your webcam.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.11-blue">
+  <img src="https://img.shields.io/badge/OpenCV-Contrib-green">
+  <img src="https://img.shields.io/badge/Face%20Recognition-LBPH-orange">
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20Mac-lightgrey">
+  <img src="https://img.shields.io/badge/Status-Active-brightgreen">
+</p>
 
 ---
 
-## 🚀 Features
+## 📖 Overview
 
-* Real-time face detection (Haar Cascade)
-* Real-time face recognition using LBPH
-* Dataset auto-creation per user
-* Train multiple users
-* Clean code structure
-* No GPU required
+This project implements a **real-time face recognition system** using:
+
+- **OpenCV Haar Cascade** for face detection  
+- **LBPH (Local Binary Patterns Histogram)** for face recognition  
+- **Python** for dataset creation, model training, and live recognition  
+
+It supports **multiple users**, automatic dataset generation, and real-time predictions using a webcam.
 
 ---
 
 ## 📁 Project Structure
 
-```
 Real-time Face Recognition/
-│── collect_dataset.py
-│── train_recognizer.py
-│── recognize.py
+│── collect_dataset.py # Capture user face images
+│── train_recognizer.py # Train LBPH model
+│── recognize.py # Live recognition using webcam
 │── README.md
 │── .gitignore
 │
 ├── haarcascades/
-│   └── haarcascade_frontalface_default.xml
+│ └── haarcascade_frontalface_default.xml
 │
-├── data/          # auto-created; ignored in Git
-└── models/        # auto-created; ignored in Git
-```
+├── data/ # Auto-created user datasets
+└── models/ # Trained model + label mapping
+
+yaml
+Copy code
+
+---
+
+## 🚀 Features
+
+- ✔ Real-time face detection  
+- ✔ Real-time face recognition  
+- ✔ Supports multiple users  
+- ✔ Lightweight and fast (no GPU required)  
+- ✔ Simple 3-step workflow  
+- ✔ Clean, modular Python scripts  
 
 ---
 
 # ⚙️ Installation & Setup
 
-### **1. Create Virtual Environment**
+### **1. Create and activate a virtual environment**
+Recommended: outside the project folder.
 
-Recommended: create venv **outside** your project folder:
-
-```
+```powershell
 py -3.11 -m venv face-rec-venv
-```
-
-Activate it:
-
-```
 .\face-rec-venv\Scripts\Activate.ps1
-```
-
----
-
-### **2. Install Required Packages**
-
-```
+2. Install required dependencies
+powershell
+Copy code
 pip install numpy==2.2.6 opencv-contrib-python==4.12.0.88
-```
+3. Ensure Haar Cascade file exists
+Place the file inside:
 
----
+bash
+Copy code
+haarcascades/haarcascade_frontalface_default.xml
+▶️ How to Run the Project
+✅ Step 1 — Collect Dataset
+Capture images using your webcam:
 
-### **3. Download Haar Cascade**
-
-Place this file inside the `haarcascades/` folder:
-
-* `haarcascade_frontalface_default.xml`
-
-(You can download it from OpenCV GitHub or I can give you a copy.)
-
----
-
-# 🏃 How to Run the Project (ALL Commands)
-
-## ✅ **Step 1 — Collect Dataset**
-
-Collect 80 images for each user:
-
-```
+powershell
+Copy code
 python collect_dataset.py --name Darshan --id 1 --samples 80
-```
-
 Example for another user:
 
-```
+powershell
+Copy code
 python collect_dataset.py --name Alice --id 2 --samples 80
-```
-
----
-
-## ✅ **Step 2 — Train the Model**
-
-This will train the LBPH recognizer and save the model:
-
-```
+✅ Step 2 — Train the Model
+powershell
+Copy code
 python train_recognizer.py
-```
+This creates:
 
-This generates:
-
-```
+pgsql
+Copy code
 models/
     face_recognizer.xml
     labels.json
-```
-
----
-
-## ✅ **Step 3 — Run Real-Time Face Recognition**
-
-Start webcam recognition:
-
-```
+✅ Step 3 — Run Real-Time Recognition
+powershell
+Copy code
 python recognize.py
-```
+Press Q to quit.
 
-Press **Q** to quit.
-
----
-
-# 📝 .gitignore (Recommended)
-
-```
+📝 .gitignore (Recommended)
+markdown
+Copy code
 venv/
 __pycache__/
 *.pyc
 *.pyd
 data/
 models/
-```
+📌 Example Output (Optional - You can add later)
+You can add screenshots or a GIF here:
 
----
+bash
+Copy code
+# Example:
+# ┌─────────────────────────────┐
+# │   [ Darshan ]               │
+# │   Face detected with box    │
+# │   Confidence: 72%           │
+# └─────────────────────────────┘
+🛠 Future Improvements
+Add attendance logging system
 
-# 💡 Notes
+Add GUI (Tkinter or PyQT)
 
-* Use **OpenCV-Contrib**, NOT the normal opencv-python.
-* Make sure your face is well-lit when collecting samples.
-* Keep your venv OUTSIDE the project to avoid GitHub issues.
+Use deep learning (FaceNet / Dlib / Mediapipe)
 
----
+Add face anti-spoofing
 
-# 🛠 Future Enhancements
+Add model accuracy report
 
-* Add attendance/entry logging
-* Add GUI
-* Add deep-learning model (FaceNet / Dlib / Mediapipe)
-* Add face anti-spoofing
-
----
-
-# 👤 Author
-
-**Darshan Naik**
-Engineering Final-Year Project — Real-Time Face Recognition
-
+👤 Author
+Darshan Naik
+Engineering Final-Year Project
+Real-Time Face Recognition System
